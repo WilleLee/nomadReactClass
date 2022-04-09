@@ -1,6 +1,8 @@
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 
 function App(){
@@ -8,7 +10,7 @@ function App(){
     return (
         <Router>
             <Switch>
-                <Route path="/movie/:id">
+                <Route path="/moive/:id">
                     <Detail />
                 </Route>
                 <Route path="/">
@@ -16,7 +18,7 @@ function App(){
                 </Route>
             </Switch>
         </Router>
-    );
+    );  
 }
 
 export default App;
