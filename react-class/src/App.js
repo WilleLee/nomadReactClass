@@ -1,39 +1,22 @@
-import { memo, useState } from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
 
-function Btn({text, changeValue}){
+
+function App(){
+
     return (
-        <button
-            onClick={changeValue}
-            style={{
-                backgroundColor: "tomato",
-                color: "white",
-                padding: "10px 20px",
-                border: 0,
-                borderRadius: 10,
-            }}
-        >
-            {text}
-        </button>
+        <Router>
+            <Switch>
+                <Route path="/movie/:id">
+                    <Detail />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </Router>
     );
-}
-
-// if props doesn't change, a component doesn't need to be re-rendered!
-const MemorizedBtn = memo(Btn);
-// memorized versions of Btn
-
-function App() {
-    const [value, setValue] = useState("save changes");
-    const changeValue = () => setValue("revert changes");
-  
-
-  return (
-    <div className="App">
-        <div>
-            <MemorizedBtn text={value} changeValue={changeValue} />
-            <MemorizedBtn text="continue" />
-        </div>
-    </div>
-  );
 }
 
 export default App;
